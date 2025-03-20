@@ -1,0 +1,40 @@
+<ReportsScreen>:
+    spents_report_image: spents_report_image_id
+    incomes_report_image: incomes_report_image_id
+    MDTopAppBar:
+        title: 'Relatorio'
+        pos_hint: {'center_x': .5, 'top': 1}
+        left_action_items: [['arrow-left', lambda x: app.go_home()]]
+    
+    ScrollView:
+        pos_hint: {'center_x': .5, 'top': .87}
+        
+        BoxLayout:
+            orientation: 'vertical'
+            size_hint_y: None
+            height: self.minimum_height
+            
+            MDLabel:
+                padding: 20, 0
+                text: "Relatorio de saidas/gastos:"
+                color: (1,0,0,1)
+                size_hint_y: None
+                height: 80
+            Image:
+                id: spents_report_image_id
+                size_hint_y: None
+                height: 250
+
+            MDLabel:
+                padding: 20, 0
+                text: "Relatorio de entradas/receitas:"
+                color: (0,1,0,1)
+                size_hint_y: None
+                height: 80
+            Image:
+                id: incomes_report_image_id
+                size_hint_y: None
+                height: 250
+            BoxLayout:
+                size_hint_y: None
+                height: 40

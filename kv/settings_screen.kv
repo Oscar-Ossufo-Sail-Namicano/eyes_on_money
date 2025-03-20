@@ -1,0 +1,56 @@
+<SettingsScreen>:
+    transaction_type: transaction_type_id
+    category: category_id
+    MDTopAppBar:
+        title: 'Historico de transacoes'
+        pos_hint: {'center_x': .5, 'top': 1}
+        left_action_items: [['arrow-left', lambda x: app.go_home()]]
+    
+    ScrollView:
+        pos_hint: {'center_x': .5, 'top': .87}
+        BoxLayout:
+            padding:'10dp'
+            spacing:'10dp'
+            orientation: 'vertical'
+            size_hint_y: None
+            height: self.minimum_height
+
+            Label:
+                text: "Adicionar nova categoria:"
+                size_hint_y: None
+                height: '20dp'
+                color: 0,0,0,1
+                halign: 'left'
+            BoxLayout:
+                size_hint_y: None
+                height: '30dp'
+                Spinner:
+                    id: transaction_type_id
+                    text: "Tipo"
+                    values: ["Despesa", "Receita"]
+                    size_hint_x: .40
+                TextInput:
+                    id: category_id
+                    hint_text: "nome da categoria"
+                Button:
+                    text: "+"
+                    size_hint_x: .15
+                    on_release: root.add_category()
+            Widget:
+                size_hint_y: None
+                height: 20
+            Button:
+                size_hint_y: None
+                height: '30dp'
+                text: "Exporta para excel"
+                on_release: root.export_to()
+            Widget:
+                size_hint_y: None
+                height: 70
+
+            Label:
+                text: 'As funcionalidades desta seccao\nestao em desenvolvimento.\nAprovite as duas prontas'
+                pos_hint:{'center_y': .2}
+                color: 1,0,0,1
+
+                

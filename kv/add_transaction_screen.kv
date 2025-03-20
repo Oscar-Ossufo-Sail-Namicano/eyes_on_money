@@ -1,0 +1,105 @@
+<AddTransactionScreen>:
+    type_spinner: type_spinner
+    category_spinner: category_spinner
+    amount_input: amount_input
+    date_input: date_input
+    description_input: description_input
+    BoxLayout:
+        orientation: 'vertical'
+        padding: dp(20)
+        spacing: dp(15)
+        BoxLayout:
+            orientation: 'horizontal'
+            spacing: dp(10)
+            size_hint_y: None
+            height: dp(50)
+            Spinner:
+                id: type_spinner
+                text: 'Tipo'
+                values: ['Receita', 'Despesa']
+                size_hint_x: 0.5
+                #background_normal: ""
+                #background_color: (0.8, 0.8, 0.8, 1)
+            Spinner:
+                id: category_spinner
+                text: 'Categoria'
+                values: root.spent_categories if type_spinner.text == "Despesa" else root.income_categories
+                size_hint_x: 0.5
+                #background_normal: ""
+                #background_color: (0.8, 0.8, 0.8, 1)
+
+        # Campo de montante
+        MDTextField:
+            id: amount_input
+            hint_text: 'Montante'
+            input_filter: 'float'
+            size_hint_y: None
+            height: dp(50)
+            padding: dp(10)
+            background_color: (1, 1, 1, 1)
+            foreground_color: (0, 0, 0, 1)
+
+        BoxLayout:
+            orientation: 'horizontal'
+            spacing: dp(10)
+            size_hint_y: None
+            height: dp(50)
+
+            MDRaisedButton:
+                pos_hint: {'center_y': .5}
+                text: 'Selecione a Data'
+                on_press: root.show_date_picker()
+                size_hint_x: 0.5
+                background_color: (0, 0.6, 1, 1)
+
+            MDTextField:
+                pos_hint: {'center_y': .5}
+                id: date_input
+                hint_text: 'Data (DD-MM-YYYY)'
+                readonly: True
+                size_hint_x: 0.5
+                background_color: (1, 1, 1, 1)
+                foreground_color: (0, 0, 0, 1)
+
+        MDTextField:
+            id: description_input
+            hint_text: 'Descrição (opcional)'
+            size_hint_y: None
+            height: dp(50)
+            padding: dp(10)
+            background_color: (1, 1, 1, 1)
+            foreground_color: (0, 0, 0, 1)
+        
+        MDLabel:
+            size_hint_y: .1
+            id: error_label
+            text: ""
+            theme_text_color: "Custom"
+            text_color: 246/255, 135/255, 177/255, 1
+            pos_hint: {"center_x": .5, "center_y": .20}
+            font_size: "13sp"
+            halign: "center"
+
+        BoxLayout:
+            #spacing: dp(20)
+            size_hint_y: None
+            #height: dp(50)
+
+            MDRaisedButton:
+                text: 'Adicionar'
+                size_hint: (0.4, None)
+                #height: dp(50)
+                pos_hint: {'x': 0}
+                on_press: root.add_transaction()
+            
+            Widget:
+                size_hint_x: 0.2
+            
+            MDRaisedButton:
+                md_bg_color: 155/255,0,0,1
+                text: 'Cancelar'
+                size_hint: (0.4, None)
+                #height: dp(50)
+                pos_hint: {'x': 1}
+                on_press: app.root.current='main'
+        BoxLayout

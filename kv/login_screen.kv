@@ -1,0 +1,106 @@
+<LoginScreen>:
+    username: username
+    password: password
+    MDFloatLayout:
+        #orientation: 'vertical'
+        #Label:
+        #    text: 'Login'
+        #    font_size: 32
+
+        Image:
+            source: "images/signin.png"
+            pos_hint: {"y": .25}
+        MDLabel:
+            text: "Quem e?"
+            pos_hint: {"center_x": .5, "center_y": .5}
+            halign: "center"
+            font_size: "40sp"
+            theme_text_color: "Custom"
+            text_color: 60/255, 43/255, 117/255, 1
+
+        MDFloatLayout:
+            size_hint: .85, .08
+            pos_hint: {"center_x": .5, "center_y":.40}
+            canvas:
+                Color:
+                    rgba: (238/255, 238/255, 238/255, 1)
+                RoundedRectangle:
+                    size: self.size
+                    pos: self.pos
+                    radius: [25]
+            TextInput:
+                hint_text: "Nome"
+                id: username
+                size_hint: 1, None
+                pos_hint: {"center_x": .5, "center_y": .5}
+                height: self.minimum_height
+                multiline: False
+                cursor_color: 96/255, 74/255, 215/255, 1
+                cursor_width: "2sp"
+                foreground_color: 96/255, 74/255, 215/255, 1
+                background_color: 0, 0, 0, 0
+                padding: 15
+        MDFloatLayout:
+            size_hint: .85, .08
+            pos_hint: {"center_x": .5, "center_y":.30}
+            canvas:
+                Color:
+                    rgba: (238/255, 238/255, 238/255, 1)
+                RoundedRectangle:
+                    size: self.size
+                    pos: self.pos
+                    radius: [25]
+            TextInput:
+                hint_text: "Senha"
+                id: password
+                password: True
+                size_hint: 1, None
+                pos_hint: {"center_x": .5, "center_y": .5}
+                height: self.minimum_height
+                multiline: False
+                cursor_color: 96/255, 74/255, 215/255, 1
+                cursor_width: "2sp"
+                foreground_color: 96/255, 74/255, 215/255, 1
+                background_color: 0, 0, 0, 0
+                padding: 15
+        MDLabel:
+            id: error_label
+            text: "Esses dados apenas servem para que outra pessoa nao veja suas informacoes, pelo que nao precisa internet para usar o aplicativo, pois os dados nao sao colectados pelo programador"
+            theme_text_color: "Custom"
+            text_color: 246/255, 135/255, 177/255, 1
+            pos_hint: {"center_x": .5, "center_y": .20}
+            font_size: "13sp"
+            halign: "center"
+
+        BoxLayout:
+            spacing: 20
+            padding: 20, 0
+            Button:
+                text: "Entrar"
+                font_size: "20sp"
+                size_hint: .5, .08
+                pos_hint: {"center_x": .5, "center_y": .10}
+                background_color: 0,0,0,0
+                on_release: root.do_login()
+                canvas.before:
+                    Color:
+                        rgba: 245/255, 135/255, 177/255, 1
+                    RoundedRectangle:
+                        size: self.size
+                        pos: self.pos
+                        radius: [23]
+            Button:
+                text: "Novo usuario"
+                font_size: "20sp"
+                size_hint: .5, .08
+                pos_hint: {"center_x": .5, "center_y": .10}
+                background_color: 0,0,0,0
+                on_release: root.create_account()
+                canvas.before:
+                    Color:
+                        rgba: 245/255, 135/255, 177/255, 1
+                    RoundedRectangle:
+                        size: self.size
+                        pos: self.pos
+                        radius: [23]
+                    

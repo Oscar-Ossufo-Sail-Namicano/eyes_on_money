@@ -1,0 +1,18 @@
+<HistoryScreen>:
+    transactions_list: transactions_list
+    MDTopAppBar:
+        title: 'Historico de transacoes'
+        pos_hint: {'center_x': .5, 'top': 1}
+        left_action_items: [['arrow-left', lambda x: app.go_home()]]
+    
+    ScrollView:
+        pos_hint: {'center_x': .5, 'top': .87}
+        BoxLayout:
+            padding: 0, 0, 0, 100
+            id: transactions_list
+            orientation: 'vertical'
+            size_hint_y: None
+            height: self.minimum_height
+            spacing: 5
+
+            

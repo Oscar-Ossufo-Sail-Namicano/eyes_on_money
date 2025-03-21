@@ -1,10 +1,12 @@
 from kivy.uix.screenmanager import Screen
 from kivy.properties import ObjectProperty
-import matplotlib.pyplot as plt
-from io import BytesIO
-import base64
+#import matplotlib.pyplot as plt
+#from io import BytesIO
+#import base64
 from database import Database
 from kivy.lang import Builder
+#Thirtyparty libraries
+from kivy_charts.pie_chart import DonutChart
 
 
 Builder.load_file('./kv/reports_screen.kv')
@@ -34,6 +36,8 @@ class ReportsScreen(Screen):
                 else:
                     categories[category] = amount
 
+        '''
+        print(categories)
         labels = list(categories.keys())
         values = list(categories.values())
 
@@ -46,17 +50,24 @@ class ReportsScreen(Screen):
         #plt.xlabel('Categorias')
         #plt.ylabel('Valor')
         #plt.title(f'{transaction_type} por Categoria')
+        
 
         buffer = BytesIO()
         plt.savefig(buffer, format='png')
         buffer.seek(0)
         image_base64 = base64.b64encode(buffer.getvalue()).decode()
+        '''
         if transaction_type == "Despesa":
-            self.spents_report_image.source = f'data:image/png;base64,{image_base64}'
-            plt.close()
+            #self.spents_report_image.source = f'data:image/png;base64,{image_base64}'
+            #plt.close()
+            chart = DonutChart(data=categories, colors=['#ff6347', '#4682b4', '#32cd32'])
+            self.spents_report_image.add_widget(chart)
             db.close()
         elif transaction_type == "Receita":
-            self.incomes_report_image.source = f'data:image/png;base64,{image_base64}'
-            plt.close()
+            #self.incomes_report_image.source = f'data:image/png;base64,{image_base64}'
+            #plt.close()
+            chart = DonutChart(data=categories, colors=['#ff6347', '#4682b4', '#32cd32'])
+            self.incomes_report_image.add_widget(chart)
             db.close()
+
         

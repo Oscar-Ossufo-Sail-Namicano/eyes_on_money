@@ -40,7 +40,9 @@ class HistoryScreen(Screen):
                 text=f"{transaction[2]}: {transaction[5]}",  # Título principal: Tipo de transacao
                 secondary_text=f"Categoria: {transaction[3]}",  # Segunda linha
                 tertiary_text=f"Montante: {transaction[4]}",  # Terceira linha
-                size_hint_x=0.7
+                size_hint_x=0.7,
+                size_hint_y=None,
+                height=50
             )
 
             # Layout para os botões (Edição e Exclusão)

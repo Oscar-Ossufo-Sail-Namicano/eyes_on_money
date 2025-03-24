@@ -11,8 +11,8 @@ class LoginScreen(Screen):
     user_id = NumericProperty(None)
 
     # Default settigns are set in this screen
-    default_spent_categories = ['Alimentação', 'Transporte', 'Lazer', 'Outros']
-    default_income_categories = ['Nhonga', 'Taxi', 'Putaria', 'Barbearia']
+    default_spent_categories = ['Alimentação', 'Transporte', 'Lazer', 'Saúde']
+    default_income_categories = ['Nhonga', 'Taxi', 'Barbearia']
 
     def do_login(self):
         db = Database()

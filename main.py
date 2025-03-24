@@ -12,7 +12,7 @@ from screens.settings_screen import SettingsScreen
 from kivy.core.window import Window
 from database import Database
 
-Window.size = (350, 600)
+#Window.size = (350, 600)
 
 if 'android' in sys.modules:
     from android.permissions import request_permissions, Permission, check_permission

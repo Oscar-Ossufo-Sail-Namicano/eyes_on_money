@@ -14,7 +14,7 @@
             height: '100dp'
             canvas.before:
                 Color:
-                    rgba: 0.6, 0.7, 1, 1  # Cor de fundo azul suave
+                    rgba: 96/255, 74/255, 215/255, 1  # Cor de fundo azul suave
                 RoundedRectangle:
                     size: self.size
                     pos: self.pos
@@ -22,7 +22,7 @@
             Label:
                 id: balance_label
                 text: '\u20AC31,850.88'  # Exemplo de saldo
-                font_size: 28
+                font_size: 38
                 color: 1, 1, 1, 1
                 bold: True
                 halign: 'center'
@@ -47,7 +47,7 @@
                 Label:
                     id: expense_label
                     text: '\u20AC7,492.12\n\nExpenses'
-                    font_size: 20
+                    font_size: 32
                     color: 1, 1, 1, 1
                     halign: 'center'
                     valign: 'middle'
@@ -57,7 +57,7 @@
                 size_hint_x: 0.5
                 canvas.before:
                     Color:
-                        rgba: 0.9, 0.9, 0.6, 1  # Cor de fundo amarela
+                        rgba: 96/255, 74/255, 215/255, 1  # Cor de fundo azul
                     RoundedRectangle:
                         size: self.size
                         pos: self.pos
@@ -65,14 +65,14 @@
                 Label:
                     id: income_label
                     text: '\u20AC14,700.35\n\nIncome'
-                    font_size: 20
+                    font_size: 32
                     color: 1, 1, 1, 1
                     halign: 'center'
                     valign: 'middle'
 
         # Lista de Contas
         BoxLayout:
-            orientation: 'vertical'
+            orientation: 'horizontal'
             padding: 0, 10
             canvas.before:
                 Color:
@@ -82,31 +82,37 @@
                     pos: self.pos
                     radius: [20]
             Label:
-                text: 'Usuario:' 
-                font_size: 18
+                text: 'Usuário:' 
+                font_size: 28
                 color: 1, 1, 1, 1
                 halign: 'left'
                 valign: 'middle'
                 padding_x: 10
                 bold: True
+                size_hint_x: .5
             Label:
                 id: username_label
                 text: 'Desconhecido' 
-                font_size: 16
+                font_size: 25
                 color: 1, 1, 1, 1
             MDTextButton:
                 text: 'SAIR' 
-                font_size: 16
+                font_size: 25
                 color: 1, 0, 0, 1
-                pos_hint: {"center_x": .5, "center_y": .9}
+                pos_hint: {"center_x": .5, "center_y": .5}
                 on_press: app.root.current='login'
+            BoxLayout:
+                size_hint_x: .05
 
+        BoxLayout
         # Botão Flutuante
         MDFloatingActionButton:
             icon: 'plus'
-            md_bg_color: 1, 0, 1, 1  # Cor rosa
-            pos_hint: {'center_x': 0.9, 'center_y': 0.08}
+            md_bg_color: 96/255, 74/255, 215/255, 1  # Cor azul
+            pos_hint: {'center_x': 0.9, 'center_y': 0.06}
             on_press: app.root.current='add_transaction'
+        BoxLayout:
+            size_hint_y: .5
 
         # Navegação Inferior
         MDBottomNavigation:
@@ -122,11 +128,11 @@
                 on_tab_press: app.root.current='main'
             MDBottomNavigationItem:
                 icon: "history"
-                text: 'Transacoes'
+                text: 'Transações'
                 on_tab_press: app.root.current='history'
             MDBottomNavigationItem:
                 icon: "file-chart"
-                text: 'Relatorios'
+                text: 'Relatórios'
                 on_tab_press: app.root.current='reports'
             MDBottomNavigationItem:
                 icon: 'cog'

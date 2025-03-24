@@ -104,8 +104,8 @@ class AddTransactionScreen(Screen):
         date_dialog = MDDatePicker()
         date_dialog.bind(on_save=self.get_date)  # Vincula o evento on_save ao método get_date
         date_dialog.open()
-        wind_width = Window.width
-        Window.size = (Window.width * .999999, Window.height * 1)
-        Window.size = (wind_width , Window.height * 1)
+        #wind_width = Window.width
+        #Window.size = (Window.width * .999999, Window.height * 1)
+        #Window.size = (wind_width , Window.height * 1)
 
 

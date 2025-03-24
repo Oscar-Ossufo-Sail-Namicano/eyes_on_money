@@ -2,7 +2,7 @@
     spents_report_image: spents_report_image_id
     incomes_report_image: incomes_report_image_id
     MDTopAppBar:
-        title: 'Relatorio'
+        title: 'Relatório'
         pos_hint: {'center_x': .5, 'top': 1}
         left_action_items: [['arrow-left', lambda x: app.go_home()]]
     
@@ -16,28 +16,30 @@
             
             MDLabel:
                 padding: 20, 0
-                text: "Relatorio de saidas/gastos:"
-                color: (1,0,0,1)
+                text: "Relatório de saidas/gastos:"
+                color: (155/255,0,0,1)
                 size_hint_y: None
                 height: 80
             #Image:
             BoxLayout
                 id: spents_report_image_id
                 size_hint_y: None
-                height: 250
+                height: 500
 
             MDLabel:
                 padding: 20, 0
-                text: "Relatorio de entradas/receitas:"
-                color: (0,1,0,1)
+                text: "Relatório de entradas/receitas:"
+                color: (6/255, 74/255, 215/255, 1)
                 size_hint_y: None
-                height: 80
+                height: 120
 
             #Image:
             BoxLayout
                 id: incomes_report_image_id
                 size_hint_y: None
-                height: 250
+                height: 500
+                
             BoxLayout:
-                size_hint_y: None
-                height: 40
+                size_hint: (1,1)
+                
+            BoxLayout

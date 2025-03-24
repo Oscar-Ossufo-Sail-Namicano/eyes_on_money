@@ -6,7 +6,7 @@ from kivy.properties import ObjectProperty
 from database import Database
 from kivy.lang import Builder
 #Thirtyparty libraries
-from kivy_charts.pie_chart import DonutChart
+from kivy_charts.pie_chart import PieChart
 
 
 Builder.load_file('./kv/reports_screen.kv')
@@ -15,9 +15,11 @@ class ReportsScreen(Screen):
     spents_report_image = ObjectProperty(None)
     incomes_report_image = ObjectProperty(None)
 
-    def on_pre_enter(self, *args):
-        self.generate_report(transaction_type='Receita')
+    def on_pre_enter(self, *args):         
+        self.spents_report_image.clear_widgets()
+        self.incomes_report_image.clear_widgets()
         self.generate_report(transaction_type='Despesa')
+        self.generate_report(transaction_type='Receita')
 
 
     def generate_report(self, transaction_type):
@@ -60,13 +62,13 @@ class ReportsScreen(Screen):
         if transaction_type == "Despesa":
             #self.spents_report_image.source = f'data:image/png;base64,{image_base64}'
             #plt.close()
-            chart = DonutChart(data=categories, colors=['#ff6347', '#4682b4', '#32cd32'])
+            chart = PieChart(data=categories, colors=['#ff6347', '#4682b4', '#32cd32'], size_hint=(1, 1), percentage_font_size=20, legend_label_font_size=20)
             self.spents_report_image.add_widget(chart)
             db.close()
         elif transaction_type == "Receita":
             #self.incomes_report_image.source = f'data:image/png;base64,{image_base64}'
             #plt.close()
-            chart = DonutChart(data=categories, colors=['#ff6347', '#4682b4', '#32cd32'])
+            chart = PieChart(data=categories, colors=['#ff6347', '#4682b4', '#32cd32'], size_hint=(1, 1), percentage_font_size=20, legend_label_font_size=20)
             self.incomes_report_image.add_widget(chart)
             db.close()
 

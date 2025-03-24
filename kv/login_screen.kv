@@ -11,7 +11,7 @@
             source: "images/signin.png"
             pos_hint: {"y": .25}
         MDLabel:
-            text: "Quem e?"
+            text: "Quem é?"
             pos_hint: {"center_x": .5, "center_y": .5}
             halign: "center"
             font_size: "40sp"
@@ -65,7 +65,7 @@
                 padding: 15
         MDLabel:
             id: error_label
-            text: "Esses dados apenas servem para que outra pessoa nao veja suas informacoes, pelo que nao precisa internet para usar o aplicativo, pois os dados nao sao colectados pelo programador"
+            text: "Esses dados servem apenas para proteger suas informações, sem necessidade de internet, já que o programador não coleta os dados."
             theme_text_color: "Custom"
             text_color: 246/255, 135/255, 177/255, 1
             pos_hint: {"center_x": .5, "center_y": .20}
@@ -84,7 +84,7 @@
                 on_release: root.do_login()
                 canvas.before:
                     Color:
-                        rgba: 245/255, 135/255, 177/255, 1
+                        rgba: 96/255, 74/255, 215/255, 1
                     RoundedRectangle:
                         size: self.size
                         pos: self.pos
@@ -98,7 +98,7 @@
                 on_release: root.create_account()
                 canvas.before:
                     Color:
-                        rgba: 245/255, 135/255, 177/255, 1
+                        rgba: 96/255, 74/255, 215/255, 1
                     RoundedRectangle:
                         size: self.size
                         pos: self.pos

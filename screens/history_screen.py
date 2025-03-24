@@ -5,6 +5,7 @@ from kivy.properties import ObjectProperty
 from kivymd.uix.list import ThreeLineListItem
 from kivymd.uix.button import MDIconButton
 from kivymd.uix.dialog import MDDialog
+from kivy.uix.label import Label
 from kivymd.uix.button import MDFlatButton
 from kivy.uix.boxlayout import BoxLayout
 from kivy.lang import Builder
@@ -14,7 +15,7 @@ Builder.load_file('./kv/history_screen.kv')
 class HistoryScreen(Screen):
     transactions_list = ObjectProperty(None)
 
-    def on_pre_enter(self, *args):
+    def on_enter(self, *args):
         self.update_history()
 
     def update_history(self):
@@ -23,6 +24,9 @@ class HistoryScreen(Screen):
         transactions = db.get_transactions(user_id)
         self.transactions_list.clear_widgets()
 
+        
+        debug_label = Label(size_hint_y=None, height=50)
+        self.transactions_list.add_widget(debug_label)
         for transaction in transactions:
             transaction_id = transaction[0]
 
@@ -32,7 +36,8 @@ class HistoryScreen(Screen):
                 size_hint_y=None,
                 height=80,  # Ajustado para acomodar ThreeLineListItem
                 padding=[10, 5],
-                spacing=10
+                spacing=10,
+                pos_hint={'center_x':.5, 'center_y': .5}
             )
 
             # ThreeLineListItem para exibir os detalhes da transação
@@ -50,7 +55,8 @@ class HistoryScreen(Screen):
                 orientation='horizontal',
                 size_hint_x=0.3,
                 spacing=10,
-                height=50
+                height=50,
+                pos_hint={'center_y': .5}
             )
 
             edit_btn = MDIconButton(icon='pencil', size_hint=(None, None), size=(40, 40), pos_hint = {'center_x': .5, 'center_y': .5})
@@ -67,6 +73,8 @@ class HistoryScreen(Screen):
             transaction_box.add_widget(buttons_layout)
 
             self.transactions_list.add_widget(transaction_box)
+            self.transactions_list.add_widget(BoxLayout())
+            
 
         db.close()
 
@@ -85,7 +93,7 @@ class HistoryScreen(Screen):
         
         
         okay_btn = MDFlatButton(text='Okay', on_release=self.close_dialog)
-        self.dialog = MDDialog(title='Info.:', text=f'Esta funcionalidade esta em desenvolvimento\nContcte o programador Oscar Namicano para mais info\nou aguarde ate ser desenvolvida', buttons=[okay_btn])
+        self.dialog = MDDialog(title='Info.:', text=f'Esta funcionalidade está em desenvolvimento.\nContate o programador Oscar Namicano para mais informações\nou aguarde até ser desenvolvida.', buttons=[okay_btn])
         self.dialog.open()
 
     def close_dialog(self, instance):
